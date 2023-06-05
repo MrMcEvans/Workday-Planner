@@ -1,10 +1,7 @@
 // Generates date and time and appends it to the ID "currentDay"
-var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = date+' '+time;
+var date = dayjs().format('dddd, MMMM D YYYY, h:mm:ss ');
 var currentDateAndTime = document.getElementById('currentDay')
-currentDateAndTime.textContent = dateTime
+currentDateAndTime.textContent = date
 
 // Function adds gets local storage as soon as the page is loaded
 function init(){
