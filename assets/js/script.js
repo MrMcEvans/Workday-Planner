@@ -1,4 +1,4 @@
-
+// Generates date and time and appends it to the ID "currentDay"
 var today = new Date();
 var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
@@ -6,7 +6,7 @@ var dateTime = date+' '+time;
 var currentDateAndTime = document.getElementById('currentDay')
 currentDateAndTime.textContent = dateTime
 
-
+// Function adds gets local storage as soon as the page is loaded
 function init(){
     var hour9 = localStorage.getItem('hour-9');
     $('#hour-9').text(hour9);
@@ -27,12 +27,12 @@ function init(){
     var hour17 = localStorage.getItem('hour-17');
     $('#hour-17').text(hour17);
 }
-
+// initial code loops through each block with the class 'time-block
 $(function () {
     var currentHour = new Date().getHours();
 $('.time-block').each(function () {
     var eventBlock = parseInt($(this).attr('data-hour'));
-
+// conditional statement to compare the block from the given 'data-hour' with the current time and add css class 
     if (eventBlock < currentHour){
         $(this).addClass('past');
     }else if (eventBlock === currentHour){
@@ -43,13 +43,13 @@ $('.time-block').each(function () {
 })
 
 });
-
+// sets local storage on event of the save button being clicked
 function saveEvent(event) {
     var textArea = event.target.parentElement.querySelector('.description');
     localStorage.setItem(textArea.id, textArea.value)
 }
-
+// event listener dor the save button
 $('.btn').on('click', saveEvent)
 
-
+// runs init function immediately when page loads
 init();
